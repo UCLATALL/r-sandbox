@@ -17,12 +17,12 @@ Once your fork the repository, any changes you make to your fork will not affect
 
 ## Setup GitHub Pages for your forked repository
 
-[GitHub Pages](https://pages.github.com/) is designed to host your personal, organization, or project pages from a GitHub repository. To set this up for your fork of this repository, head to your fork, click *Settings* at the top, and scroll down to GitHub Pages. Change the *Source* option to *master*.
+[GitHub Pages](https://pages.github.com/) is designed to host your personal, organization, or project pages from a GitHub repository. To set this up for your fork of this repository, head to your fork, click *Settings* at the top, and scroll down to GitHub Pages. Change the *Source* option to `master`.
 
 ## Customization
 
-Now that you have set up your repository, you can edit the HTML for each file as you would a normal webpage, and when you commit the changes to your *master* branch they will propagate to the github.io pages.
+Now that you have set up your repository, you can edit the HTML for each file as you would a normal webpage, and when you commit the changes to your `master` branch they will propagate to the github.io pages. One thing you can get started with is to change the links in the `iframe` tags in `class-page.html` to point to your own custom Google Form, Padlet page, and Poll Everywhere poll.
 
 ## Done! 
 
-That's it! You can now navigate to *[your-username].github.io/r-sandbox* to view the main page, and *[your-username].github.io/r-sandbox/quiz-sandbox*, *[your-username].github.io/r-sandbox/class-page*, etc. for the sub pages.
+That's it! You can now navigate to `[your-username].github.io/r-sandbox` to view the main page, and `[your-username].github.io/r-sandbox/quiz-sandbox`, `[your-username].github.io/r-sandbox/class-page`, etc. for the sub pages.
