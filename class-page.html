@@ -1,0 +1,54 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Page | R-Sandboxes</title>
+
+  <!-- Styles -->
+  <style type="text/css">
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .column {
+    flex-basis: 100%;
+  }
+
+  iframe {
+    overflow: hidden;
+    min-height: 425px;
+    border: 0px #ffffff none;
+  }
+
+  @media screen and (min-width: 800px) {
+    .column {
+      flex: 1;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div class="row">
+    <iframe class="column" src="https://pollev.com"></iframe>
+    <iframe class="column" src="https://docs.google.com"></iframe>
+  </div>
+  <div class="row">
+    <iframe class="column" src="{{ "/class-sandbox.html" | absolute_url }}"></iframe>
+  </div>
+  <div class="row">
+    <iframe class="column" style="min-height: 800px;" src="https://padlet.com"></iframe>
+  </div>
+
+  <!-- Scripts -->
+  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+</body>
+
+</html>
