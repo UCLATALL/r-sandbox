@@ -1,54 +1,40 @@
 ---
+title: Class Page
+description: In-class dashboard for making responses to polls, asking questions, sharing media, or running R.
+sandbox: class
+layout: default
+custom_css: dashboard
 ---
+<div class="row">
+  <iframe class="column" src="https://www.pollev.com/adamblake239"></iframe>
 
-<!DOCTYPE html>
-<html>
+  <!-- I opted for a custom look for my Ask for Me! form -->
+  <!-- To get it to work correctly, make sure you pull the form "action" and input "name" properties from the  source of the Google form -->
+  <!-- If you don't want to deal with that, just uncomment the iframe line just below this one, and delete the <div> element containing the custom form -->
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Class Page | R-Sandboxes</title>
+  <!-- <iframe class="column" src="https://bit.ly/100ABlake_askforme_embed"></iframe> -->
 
-  <!-- Styles -->
-  <style type="text/css">
-  .row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .column {
-    flex-basis: 100%;
-  }
-
-  iframe {
-    overflow: hidden;
-    min-height: 425px;
-    border: 0px #ffffff none;
-  }
-
-  @media screen and (min-width: 800px) {
-    .column {
-      flex: 1;
-    }
-  }
-  </style>
-</head>
-
-<body>
-  <div class="row">
-    <iframe class="column" src="https://www.pollev.com/adamblake239"></iframe>
-    <iframe class="column" src="https://bit.ly/100ABlake_askforme_embed"></iframe>
+  <div class="column form-row">
+    <div class="form-column">
+      <form class="column" action="https://docs.google.com/forms/d/e/1FAIpQLSesDonsOd0TBDCp5DFY43vozKljeZEQ1LETStVsxZfBr14S_g/formResponse?embedded=true" target="_self" method="POST" id="mG61Hd">
+        <h2>Ask for me!</h2>
+        <p>What would you like to ask the instructor?</p>
+        <input type="text" name="entry.2144167684" placeholder="Your question">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   </div>
-  <div class="row">
-    <iframe class="column" src="{{ "/class-sandbox.html" | absolute_url }}"></iframe>
-  </div>
-  <div class="row">
-    <iframe class="column" style="min-height: 800px;" src="https://bit.ly/100ABlake_padlet"></iframe>
-  </div>
+</div>
 
-  <!-- Scripts -->
-  <script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
-</body>
+{% assign dc-style = "min-height: " | append: site.sandbox[page.sandbox].height | append: "px;" %}
+<div class="row" style="{{ dc-style }}">
+  <iframe class="column" style="{{ dc-style }}" scrolling="no"
+          src="{{ "-sandbox.html" | prepend: page.sandbox | absolute_url }}"></iframe>
+</div>
 
-</html>
+<div class="row">
+  <iframe class="column" style="min-height: 800px;" src="https://bit.ly/100ABlake_padlet"></iframe>
+</div>
+
+<!-- Scripts -->
+{% include datacamp.html %}

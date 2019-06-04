@@ -1,0 +1,33 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later # only Main files contain this front matter, not partials.
+---
+
+.container {
+  height: 100vh;
+  text-align: center;
+}
+
+h1 {
+  margin: 2em 0 2em 0;
+}
+
+a {
+  display: inline-block;
+  height: 20vh;
+  line-height: 20vh;
+  width: 100vw;
+  text-align: center;
+  vertical-align: bottom;
+
+  color: #000;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+}
+
+a:hover {
+  background: #99ccff;
+  background: -webkit-linear-gradient(to right, #9999ff, #99ccff, #9999ff);
+  background: linear-gradient(to right, #9999ff, #99ccff, #9999ff);
+
+  transform: scale(1.1);
+}

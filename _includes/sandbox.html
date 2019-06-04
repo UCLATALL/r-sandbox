@@ -1,0 +1,17 @@
+{% assign sandbox = site.sandbox[page.sandbox] %}
+
+<div id="class-sandbox" data-datacamp-exercise
+  data-lang="{{ sandbox.lang }}"
+  data-height="{{ sandbox.height }}"
+  data-show-run-button="{{ sandbox.show-run-button }}"
+  data-show-solution-before="{{ sandbox.show-solution-before }}"
+  data-no-lazy-load="{{ sandbox.show-solution-before }}">
+  <code data-type="pre-exercise-code">{{ sandbox.pre-exercise-code }}</code>
+  <code data-type="sample-code">{{ sandbox.sample-code }}</code>
+  <code data-type="solution">{{ sandbox.solution }}</code>
+  <code data-type="sct">{{ sandbox.sct }}</code>
+  <div class="hint">{{ sandbox.hint }}</div>
+</div>
+
+<!-- Scripts -->
+{% include datacamp.html %}

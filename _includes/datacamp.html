@@ -1,0 +1,6 @@
+<script async src="https://cdn.jsdelivr.net/gh/uclatall/datacamp-light@build/dist/dcl-react.js"></script>
+<script type="text/javascript">
+  // right part of module is broken until resize fires
+  const sleep = (time) => new Promise((resolve) => setTimeout(resolve, time));
+  sleep(800).then(() => {window.dispatchEvent(new Event('resize'))});
+</script>

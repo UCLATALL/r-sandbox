@@ -1,0 +1,33 @@
+title: R Sandboxes
+
+sandbox:
+  class:
+    lang: r
+    height: 350
+    show-run-button: true
+    show-solution-before: false
+    no-lazy-load: true
+    pre-exercise-code: |
+      require(readr)
+      require(mosaic)
+      require(supernova)
+      require(lsr)
+    sample-code: null
+    solution: null
+    sct: null
+    hint: null
+  quiz:
+    lang: r
+    height: 350
+    show-run-button: true
+    show-solution-before: false
+    no-lazy-load: true
+    pre-exercise-code: |
+      require(readr)
+      require(mosaic)
+      require(supernova)
+      require(lsr)
+    sample-code: null
+    solution: null
+    sct: null
+    hint: null
