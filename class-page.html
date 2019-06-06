@@ -5,6 +5,37 @@ sandbox: class
 layout: default
 custom_css: dashboard
 ---
+
+<style type="text/css">
+.alert {
+    margin: 1em auto;
+    width: 80%;
+    min-height: 2em;
+    line-height: 2em;
+    border-radius: .5em;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: all .5s;
+}
+
+.success, .failure {
+  visibility: visible;
+  opacity: 1;
+}
+
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+.failure {
+  color: #D8000C;
+  background-color: #FFBABA;
+}
+
+</style>
+
 <div class="row">
   <iframe class="column" src="https://www.pollev.com/adamblake239"></iframe>
 
@@ -16,12 +47,13 @@ custom_css: dashboard
 
   <div class="column form-row">
     <div class="form-column">
-      <form class="column" action="https://docs.google.com/forms/d/e/1FAIpQLSesDonsOd0TBDCp5DFY43vozKljeZEQ1LETStVsxZfBr14S_g/formResponse?embedded=true" target="_self" method="POST" id="mG61Hd">
+      <form class="column" action="https://docs.google.com/forms/d/e/1FAIpQLSesDonsOd0TBDCp5DFY43vozKljeZEQ1LETStVsxZfBr14S_g/formResponse?embedded=true" target="form-exit" method="POST" id="mG61Hd">
         <h2>Ask for me!</h2>
         <p>What would you like to ask the instructor?</p>
-        <input type="text" name="entry.2144167684" placeholder="Your question">
+        <input type="text" name="entry.2144167684" placeholder="Your question" autocomplete="off">
         <input type="submit" value="Submit">
       </form>
+      <div id="form-messages" class="alert"></div>
     </div>
   </div>
 </div>
@@ -38,3 +70,35 @@ custom_css: dashboard
 
 <!-- Scripts -->
 {% include datacamp.html %}
+
+<script type="text/javascript">
+const form_feedback = document.getElementById("form-messages");
+const form = document.getElementById("mG61Hd");
+form.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const form_data = new FormData(form);
+
+
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener("load", e => {
+    form.reset();
+    form_feedback.innerHTML = "Question submitted.";
+    form_feedback.classList.add("success");
+    setTimeout(function() { form_feedback.classList.remove("success"); }, 2000);
+  });
+
+  xhr.addEventListener("error", e => {
+    // for some reason it will always return an error
+    form.reset();
+    form_feedback.innerHTML = "Question submitted.";
+    form_feedback.classList.add("success");
+    setTimeout(function() { form_feedback.classList.remove("success"); }, 2000);
+    console.log(e);
+  });
+
+  xhr.open("POST", form.action);
+  xhr.send(form_data);
+});
+
+</script>

@@ -2,6 +2,7 @@
 title: Index
 description: Landing page for in-class R sandboxes. It has links to the various dashboards and sandboxes you might need.
 layout: default
+custom_css: index
 ---
 
 # R sandboxes
