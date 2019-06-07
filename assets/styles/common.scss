@@ -1,8 +1,52 @@
 ---
-# this ensures Jekyll reads the file to be transformed into CSS later # only Main files contain this front matter, not partials.
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
 ---
 
 body {
   font-family: "Montserrat", sans-serif;
   background: #19ACED;
+}
+
+code, pre {
+  font-size: 12pt;
+  font-family: Consolas, monospace;
+  overflow-x: auto;
+}
+
+pre {
+  line-height: 1.2em;
+  padding-bottom: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+.alert {
+  margin: 1em auto;
+  padding: 0 1em;
+  width: 80%;
+  min-height: 2em;
+  line-height: 2em;
+  border-radius: .5em;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: all .5s;
+}
+
+.success, .failure {
+  visibility: visible;
+  opacity: 1;
+}
+
+.success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+.failure {
+  color: #D8000C;
+  background-color: #FFBABA;
 }

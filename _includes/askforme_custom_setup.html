@@ -1,0 +1,36 @@
+<div class="alert failure">
+  <p>
+    You are trying to load the custom Ask For Me form, but some values are missing.
+    <a href="{{ site.askforme.url | remove: "/viewform" | append: "/viewform" }}" target="_blank">Click here</a>
+    to go to your form. Once there, view the source code of the page. Copy the entire text into the box below, then
+    click "Find Values".
+  </p>
+  <textarea id="form_source"></textarea>
+  <button id="form_source_button">Find Values</button>
+</div>
+<div class="alert success hidden">
+  <p>
+    Update the <code>askforme</code> section of your <code>_config.yml</code>
+    to look like this:
+  </p>
+  <pre id="form_setup_values"></pre>
+</div>
+<script type="text/javascript">
+  document.getElementById("form_source_button").onclick = function() {
+    // search the source code for the values
+    const form_source = document.getElementById("form_source").value;
+
+    // get the text input name and form id
+    const re = /<form .*?id="(.*?)".*?<input type="text".*? name="(entry\.\d{10})"/g;
+    const matches = re.exec(form_source);
+
+    // populate the form_setup_values code
+    document.getElementById("form_setup_values").innerHTML =
+      "askforme:\n" +
+      "  url: {{ site.askforme.url }}\n" +
+      "  use_custom_form: true\n" +
+      "  form_id: " + matches[1] + "\n" +
+      "  text_input_name: " + matches[2];
+    document.getElementById("form_setup_values").parentNode.classList.remove("hidden");
+  };
+</script>

@@ -3,101 +3,55 @@ title: Class Page
 description: In-class dashboard for making responses to polls, asking questions, sharing media, or running R.
 sandbox: class
 layout: default
-custom_css: dashboard
+custom_css:
+  - dashboard
 ---
 
-<style type="text/css">
-.alert {
-    margin: 1em auto;
-    width: 80%;
-    min-height: 2em;
-    line-height: 2em;
-    border-radius: .5em;
-
-    visibility: hidden;
-    opacity: 0;
-    transition: all .5s;
-}
-
-.success, .failure {
-  visibility: visible;
-  opacity: 1;
-}
-
-.success {
-  color: #4F8A10;
-  background-color: #DFF2BF;
-}
-
-.failure {
-  color: #D8000C;
-  background-color: #FFBABA;
-}
-
-</style>
-
 <div class="row">
-  <iframe class="column" src="https://www.pollev.com/adamblake239"></iframe>
+  <!-- Poll Everywhere -->
+  <iframe class="column" src="{{ site.polleverywhere.url }}"></iframe>
 
-  <!-- I opted for a custom look for my Ask for Me! form -->
-  <!-- To get it to work correctly, make sure you pull the form "action" and input "name" properties from the  source of the Google form -->
-  <!-- If you don't want to deal with that, just uncomment the iframe line just below this one, and delete the <div> element containing the custom form -->
-
-  <!-- <iframe class="column" src="https://bit.ly/100ABlake_askforme_embed"></iframe> -->
-
-  <div class="column form-row">
-    <div class="form-column">
-      <form class="column" action="https://docs.google.com/forms/d/e/1FAIpQLSesDonsOd0TBDCp5DFY43vozKljeZEQ1LETStVsxZfBr14S_g/formResponse?embedded=true" target="form-exit" method="POST" id="mG61Hd">
-        <h2>Ask for me!</h2>
-        <p>What would you like to ask the instructor?</p>
-        <input type="text" name="entry.2144167684" placeholder="Your question" autocomplete="off">
-        <input type="submit" value="Submit">
-      </form>
-      <div id="form-messages" class="alert"></div>
-    </div>
-  </div>
+  <!-- Ask for Me! -->
+  {% unless site.askforme.use_custom_form %}
+    <iframe class="column" src="{{ site.askforme.url }}"></iframe>
+  {% elsif site.askforme.text_input_name == blank or site.askforme.form_id == blank %}
+    {% include askforme_custom_setup.html %}
+  {% else %}
+    {% include askforme_custom_form.html %}
+  {% endunless %}
 </div>
 
+<!-- R sandbox -->
 {% assign dc-style = "min-height: " | append: site.sandbox[page.sandbox].height | append: "px;" %}
 <div class="row" style="{{ dc-style }}">
-  <iframe class="column" style="{{ dc-style }}" scrolling="no"
-          src="{{ "-sandbox.html" | prepend: page.sandbox | absolute_url }}"></iframe>
+  <iframe class="column" style="{{ dc-style }}" scrolling="no" src="{{ "-sandbox.html" | prepend: page.sandbox | absolute_url }}"></iframe>
 </div>
 
+<!-- Padlet -->
 <div class="row">
-  <iframe class="column" style="min-height: 800px;" src="https://bit.ly/100ABlake_padlet"></iframe>
+  <iframe class="column" style="min-height: 800px;" src="{{ site.padlet.url }}"></iframe>
 </div>
 
 <!-- Scripts -->
 {% include datacamp.html %}
 
 <script type="text/javascript">
+const form = document.getElementById("{{ site.askforme.form_id }}");
 const form_feedback = document.getElementById("form-messages");
-const form = document.getElementById("mG61Hd");
 form.addEventListener("submit", e => {
   e.preventDefault();
-
   const form_data = new FormData(form);
-
-
   const xhr = new XMLHttpRequest();
-  xhr.addEventListener("load", e => {
-    form.reset();
-    form_feedback.innerHTML = "Question submitted.";
-    form_feedback.classList.add("success");
-    setTimeout(function() { form_feedback.classList.remove("success"); }, 2000);
-  });
 
   xhr.addEventListener("error", e => {
-    // for some reason it will always return an error
+    // it will always return an error due to CORS
     form.reset();
     form_feedback.innerHTML = "Question submitted.";
     form_feedback.classList.add("success");
     setTimeout(function() { form_feedback.classList.remove("success"); }, 2000);
-    console.log(e);
   });
 
-  xhr.open("POST", form.action);
+  xhr.open("POST", form.action, true);
   xhr.send(form_data);
 });
 
