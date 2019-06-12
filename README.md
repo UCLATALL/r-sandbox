@@ -1,9 +1,10 @@
 # r-sandbox
-R sandboxes and teacher pages for in-class and quiz exercises. You can preview the pages at https://adamblake.github.io/r-sandbox. Read the below documentation for setting up your own copy and customizing it.
+
+R sandboxes and teacher pages for in-class and quiz exercises. You can preview a complete setup at https://adamblake.github.io/r-sandbox. Read the below documentation for setting up your own copy and customizing it.
 
 # Using these sandboxes
 
-It is recommended that you *Fork* this repository before using the pages in it. Using the below instructions, you should be able to get setup in just a few minutes.
+You should *Fork* this repository before using the pages in it. Using the below instructions, you should be able to get setup in just a few minutes.
 
 ## 1. Create a GitHub Account
 

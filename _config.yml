@@ -1,16 +1,16 @@
 title: R Sandboxes
 
 polleverywhere:
-  url: https://www.pollev.com/adamblake239
+  url: https://www.pollev.com/
 
 askforme:
-  url: https://docs.google.com/forms/d/e/1FAIpQLSesDonsOd0TBDCp5DFY43vozKljeZEQ1LETStVsxZfBr14S_g/viewform
-  use_custom_form: true
-  form_id: mG61Hd
-  text_input_name: entry.2144167684
+  url: https://docs.google.com/forms/
+  use_custom_form: false
+  form_id:
+  text_input_name:
 
 padlet:
-  url: https://bit.ly/100ABlake_padlet
+  url: https://padlet.com/
 
 sandbox:
   class:
